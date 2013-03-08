@@ -12,6 +12,11 @@ public class Container extends Display implements IContainer{
 
 	@Override
 	public Display add(Display display) {
+		
+		if (contains(display)) {
+			return display;
+		}
+		
 		displays.add(display);
 		display.internal_setParent(this);
 		return display;
@@ -19,6 +24,11 @@ public class Container extends Display implements IContainer{
 
 	@Override
 	public Display addAt(Display display, int index) {
+		
+		if (contains(display)) {
+			return display;
+		}
+		
 		displays.add(index, display);
 		display.internal_setParent(this);
 		return display;
@@ -75,6 +85,11 @@ public class Container extends Display implements IContainer{
 		displays.add(max, displays.remove(index+1));
 	}
 	
+	@Override
+	public boolean contains(Display display) {
+		return displays.contains(display);
+	}
+	
 	private final List<Display> displays = new ArrayList<Display>();
 
 	@Override
@@ -97,6 +112,7 @@ public class Container extends Display implements IContainer{
 			}
 		}
 	}
+	
 	
 	@Override
 	void internal_dispatchTouchEvent(TouchEvent e) {

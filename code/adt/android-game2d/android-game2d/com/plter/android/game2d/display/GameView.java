@@ -235,4 +235,9 @@ public class GameView extends SurfaceView implements IContainer{
 	public int getIndex(Display display) {
 		return rootContainer.getIndex(display);
 	}
+	
+	@Override
+	public boolean contains(Display display) {
+		return rootContainer.contains(display);
+	}
 }

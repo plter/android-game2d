@@ -5,6 +5,10 @@ import com.plter.android.game2d.display.Display;
 public class TranslateTween extends Tween {
 
 	
+	public TranslateTween() {
+	}
+	
+	
 	public TranslateTween(Display target,float startX,float startY,float endX,float endY) {
 		this.setStartX(startX);
 		this.setStartY(startY);
@@ -15,10 +19,10 @@ public class TranslateTween extends Tween {
 	
 	@Override
 	protected void onEnterFrame(int currentFrame, int frames) {
-		if (distanceXPerFrame>0) {
+		if (distanceXPerFrame!=0) {
 			getTarget().x = getStartX()+distanceXPerFrame*currentFrame;
 		}
-		if (distanceYPerFrame>0) {
+		if (distanceYPerFrame!=0) {
 			getTarget().y = getStartY()+distanceYPerFrame*currentFrame;
 		}
 	}
