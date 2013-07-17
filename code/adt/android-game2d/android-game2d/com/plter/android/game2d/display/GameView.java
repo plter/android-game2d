@@ -111,7 +111,7 @@ public class GameView extends SurfaceView implements IContainer{
 		this.gameViewBackground = gameViewBackground;
 	}
 	
-	public Root getRoot() {
+	public Stage getRoot() {
 		return rootContainer;
 	}
 
@@ -120,7 +120,7 @@ public class GameView extends SurfaceView implements IContainer{
 	private int fps = 20;
 	private boolean running = false;
 	private int gameViewBackground = Color.WHITE;
-	private final Root rootContainer = new Root();
+	private final Stage rootContainer = new Stage();
 
 	public final EventListenerList<GameViewEvent> enterFrame = new EventListenerList<GameViewEvent>();
 	public final EventListenerList<GameViewEvent> surfaceDestroyed = new EventListenerList<GameViewEvent>();

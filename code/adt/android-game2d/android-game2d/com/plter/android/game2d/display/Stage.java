@@ -1,8 +1,8 @@
 package com.plter.android.game2d.display;
 
-public class Root extends Container {
+public class Stage extends Container {
 
-	Root() {
+	Stage() {
 	}
 	
 	@Override

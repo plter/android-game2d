@@ -21,9 +21,9 @@ public abstract class Display{
 	}
 	
 	
-	public Root getRoot(){
-		if (this instanceof Root) {
-			return (Root) this;
+	public Stage getRoot(){
+		if (this instanceof Stage) {
+			return (Stage) this;
 		}
 		return parent!=null?parent.getRoot():null;
 	}
@@ -98,7 +98,7 @@ public abstract class Display{
 	private final Matrix boundsMatrix = new Matrix();
 	public abstract RectF getBounds();
 	public GameView getGameView() {
-		Root r = getRoot();
+		Stage r = getRoot();
 		return r!=null?r.getGameView():null;
 	}
 	

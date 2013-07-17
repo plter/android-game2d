@@ -1,12 +1,11 @@
 package com.plter.android.game2d.display;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.graphics.Canvas;
 import android.graphics.RectF;
 
 import com.plter.android.game2d.events.TouchEvent;
+import com.plter.lib.java.lang.Array;
+import com.plter.lib.java.lang.ArrayLoopCallback;
 
 public class Container extends Display implements IContainer{
 
@@ -17,7 +16,7 @@ public class Container extends Display implements IContainer{
 			return display;
 		}
 		
-		displays.add(display);
+		displays.push(display);
 		display.internal_setParent(this);
 		return display;
 	}
@@ -29,7 +28,7 @@ public class Container extends Display implements IContainer{
 			return display;
 		}
 		
-		displays.add(index, display);
+		displays.insert(display,index);
 		display.internal_setParent(this);
 		return display;
 	}
@@ -37,7 +36,7 @@ public class Container extends Display implements IContainer{
 	@Override
 	public boolean remove(Display display) {
 		display.internal_setParent(null);
-		return displays.remove(display);
+		return displays.remove(display)!=null;
 	}
 
 	@Override
@@ -53,7 +52,7 @@ public class Container extends Display implements IContainer{
 
 	@Override
 	public void removeAll() {
-		while (displays.size()>0) {
+		while (displays.length()>0) {
 			displays.remove(0).internal_setParent(null);
 		}
 	}
@@ -81,8 +80,8 @@ public class Container extends Display implements IContainer{
 			return;
 		}
 		
-		displays.add(min, displays.remove(max));
-		displays.add(max, displays.remove(index+1));
+		displays.insert(displays.remove(max),min);
+		displays.insert(displays.remove(index+1),max);
 	}
 	
 	@Override
@@ -90,45 +89,41 @@ public class Container extends Display implements IContainer{
 		return displays.contains(display);
 	}
 	
-	private final List<Display> displays = new ArrayList<Display>();
+	private final Array<Display> displays = new Array<Display>();
 
 	@Override
 	public int getIndex(Display display) {
-		for (int i = 0; i < displays.size(); i++) {
-			if (displays.get(i)==display) {
-				return i;
-			}
-		}
-		return -1;
+		return displays.indexOf(display);
 	}
 
 	@Override
-	public final void draw(Canvas canvas) {
-		Display d;
-		for (int i = 0; i < displays.size(); i++) {
-			d = displays.get(i);
-			if (d.visible) {
-				d.internal_draw(canvas);
+	public final void draw(final Canvas canvas) {
+		displays.each(new ArrayLoopCallback<Display>() {
+			
+			@Override
+			public void onRead(Display d) {
+				if (d.visible) {
+					d.internal_draw(canvas);
+				}
 			}
-		}
+		});
 	}
 	
 	
 	@Override
-	void internal_dispatchTouchEvent(TouchEvent e) {
+	void internal_dispatchTouchEvent(final TouchEvent e) {
 		
-		Display d;
-		
-		for (int i = displays.size()-1; i >= 0; i--) {
-			try{
-				d = displays.get(i);
+		displays.each(new ArrayLoopCallback<Display>() {
+			
+			@Override
+			public void onRead(Display d) {
 				if (d.isTouchEnable()&&d.hitTest(e.getX(), e.getY())) {
 					d.internal_dispatchTouchEvent(TouchEvent.alloc(TouchEvent.class).init(e.getType(), d, e.getRelatedMotionEvent()));
-					break;
+					
+					break_();
 				}
-			}catch(ArrayIndexOutOfBoundsException exception){
 			}
-		}
+		});
 		
 		super.internal_dispatchTouchEvent(e);
 	}
@@ -136,9 +131,13 @@ public class Container extends Display implements IContainer{
 	@Override
 	public RectF getBounds() {
 		bounds.setEmpty();
-		for (int i = 0; i < displays.size(); i++) {
-			bounds.union(displays.get(i).getBounds());
-		}
+		displays.each(new ArrayLoopCallback<Display>() {
+			
+			@Override
+			public void onRead(Display current) {
+				bounds.union(current.getBounds());
+			}
+		});
 		getBoundsMatrix().mapRect(bounds);
 		return bounds;
 	}
