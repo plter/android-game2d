@@ -16,10 +16,10 @@ public class ScaleTween extends Tween {
 	@Override
 	protected void onEnterFrame(int currentFrame, int frames) {
 		if (distanceXPerFrame>0) {
-			getTarget().scaleX = getStartScaleX()+distanceXPerFrame*currentFrame;
+			getTarget().setScaleX(getStartScaleX()+distanceXPerFrame*currentFrame);
 		}
 		if (distanceYPerFrame>0) {
-			getTarget().scaleY = getStartScaleY()+distanceYPerFrame*currentFrame;
+			getTarget().setScaleY(getStartScaleY()+distanceYPerFrame*currentFrame);
 		}
 	}
 	
@@ -67,8 +67,8 @@ public class ScaleTween extends Tween {
 	}
 	
 	protected void onEnd() {
-		getTarget().x=endScaleX;
-		getTarget().y=endScaleY;
+		getTarget().setScaleX(endScaleX);
+		getTarget().setScaleY(endScaleY);
 	};
 	
 	private void computeScaleXDistancePerFrame(){

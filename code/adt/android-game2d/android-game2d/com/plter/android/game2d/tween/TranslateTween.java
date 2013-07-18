@@ -20,10 +20,10 @@ public class TranslateTween extends Tween {
 	@Override
 	protected void onEnterFrame(int currentFrame, int frames) {
 		if (distanceXPerFrame!=0) {
-			getTarget().x = getStartX()+distanceXPerFrame*currentFrame;
+			getTarget().setX(getStartX()+distanceXPerFrame*currentFrame);
 		}
 		if (distanceYPerFrame!=0) {
-			getTarget().y = getStartY()+distanceYPerFrame*currentFrame;
+			getTarget().setY(getStartY()+distanceYPerFrame*currentFrame);
 		}
 	}
 	
@@ -71,8 +71,8 @@ public class TranslateTween extends Tween {
 	}
 	
 	protected void onEnd() {
-		getTarget().x=endX;
-		getTarget().y=endY;
+		getTarget().setX(endX);
+		getTarget().setY(endY);
 	};
 	
 	private void computeDistanceXPerFrame(){

@@ -25,7 +25,7 @@ public abstract class Display{
 		if (this instanceof Stage) {
 			return (Stage) this;
 		}
-		return parent!=null?parent.getRoot():null;
+		return getParent()!=null?getParent().getRoot():null;
 	}
 	
 	
@@ -51,7 +51,7 @@ public abstract class Display{
 
 
 	void internal_setParent(Container parent) {
-		this.parent = parent;
+		this.parent=parent;
 	}
 	
 	void internal_dispatchTouchEvent(TouchEvent e){
@@ -122,7 +122,86 @@ public abstract class Display{
 		this.alpha = alpha;
 	}
 
-	public float x=0,y=0,scaleX=1,scaleY=1,rotation=0,regX=0,regY=0;
+	public float getX() {
+		return x;
+	}
+
+
+	public void setX(float x) {
+		this.x = x;
+	}
+
+
+	public float getY() {
+		return y;
+	}
+
+
+	public void setY(float y) {
+		this.y = y;
+	}
+
+
+	public float getScaleX() {
+		return scaleX;
+	}
+
+
+	public void setScaleX(float scaleX) {
+		this.scaleX = scaleX;
+	}
+
+
+	public float getScaleY() {
+		return scaleY;
+	}
+
+
+	public void setScaleY(float scaleY) {
+		this.scaleY = scaleY;
+	}
+
+
+	public float getRotation() {
+		return rotation;
+	}
+
+
+	public void setRotation(float rotation) {
+		this.rotation = rotation;
+	}
+
+
+	public float getRegX() {
+		return regX;
+	}
+
+
+	public void setRegX(float regX) {
+		this.regX = regX;
+	}
+
+
+	public float getRegY() {
+		return regY;
+	}
+
+
+	public void setRegY(float regY) {
+		this.regY = regY;
+	}
+
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
+	private float x=0,y=0,scaleX=1,scaleY=1,rotation=0,regX=0,regY=0;
 	public boolean visible=true;
 	private Container parent=null;
 	private boolean touchEnable=true;
