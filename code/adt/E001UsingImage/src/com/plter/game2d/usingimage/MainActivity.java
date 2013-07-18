@@ -21,8 +21,8 @@ public class MainActivity extends Activity {
 		setContentView(gameView);
 		
 		i = new Image(BitmapLoader.loadBitmap(this, R.drawable.ic_launcher));
-		i.x=100;
-		i.y=100;
+		i.setX(100);
+		i.setY(100);
 		gameView.add(i);
 	}
 

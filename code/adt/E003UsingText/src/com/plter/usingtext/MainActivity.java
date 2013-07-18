@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 		
 		t = new TextLine("Hello Android Game2d");
 		t.setSize(24);
-		t.y=t.getLineHeight();
+		t.setY(t.getLineHeight());
 		gameView.add(t);
 	}
 

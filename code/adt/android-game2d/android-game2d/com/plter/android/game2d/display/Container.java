@@ -113,7 +113,7 @@ public class Container extends Display implements IContainer{
 	@Override
 	void internal_dispatchTouchEvent(final TouchEvent e) {
 		
-		displays.each(new ArrayLoopCallback<Display>() {
+		displays.reverseEach(new ArrayLoopCallback<Display>() {
 			
 			@Override
 			public void onRead(Display d) {

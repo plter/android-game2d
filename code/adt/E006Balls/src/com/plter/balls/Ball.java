@@ -19,19 +19,19 @@ public class Ball extends Shape {
 	}
 	
 	public void move(){
-		x+=speedX;
-		y+=speedY;
+		setX(getX()+speedX);
+		setY(getY()+speedY);
 		
-		if (x<0) {
+		if (getX()<0) {
 			speedX=Math.abs(speedX);
 		}
-		if (y<0) {
+		if (getY()<0) {
 			speedY=Math.abs(speedY);
 		}
-		if (x>800) {
+		if (getX()>800) {
 			speedX=-Math.abs(speedX);
 		}
-		if (y>500) {
+		if (getY()>500) {
 			speedY=-Math.abs(speedY);
 		}
 	}

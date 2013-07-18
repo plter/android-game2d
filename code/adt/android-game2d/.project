@@ -30,4 +30,11 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>plib-common</name>
+			<type>2</type>
+			<location>/Users/plter/Work/gitroot/plter/github/plter-lib/code/java/eclipse/plib-common/plib-common</location>
+		</link>
+	</linkedResources>
 </projectDescription>

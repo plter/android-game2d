@@ -32,25 +32,26 @@ public class MainActivity extends Activity {
 		
 		
 		gameView = new GameView(this);
+//		gameView.setFps(60);
 		
 		shape = new Shape();
 		shape.getPath().addRect(new RectF(0, 0, 50, 50), Direction.CW);
-		shape.x=75;
-		shape.y=75;
-		shape.regX=25;
-		shape.regY=25;
-		shape.scaleX=2;
+		shape.setX(75);
+		shape.setY(75);
+		shape.setRegX(25);
+		shape.setRegY(25);
+		shape.setScaleX(2);
 		
 		img = new Image(BitmapLoader.loadBitmap(this, R.drawable.ic_launcher));
-		img.x=200;
-		img.y=100;
-		img.regX=50;
+		img.setX(200);
+		img.setY(100);
+		img.setRegX(50);
 		
 		tl = new TextLine("Hello Game2d");
-		tl.x=100;
-		tl.y=250;
-		tl.regX=50;
-		tl.regY=20;
+		tl.setX(100);
+		tl.setY(250);
+		tl.setRegX(50);
+		tl.setRegY(20);
 		
 		bounds= new Shape();
 		bounds.getPaint().setStyle(Style.STROKE);
@@ -69,9 +70,9 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public boolean onReceive(Object arg0, GameViewEvent arg1) {
-				shape.rotation+=1;
-				img.rotation-=2;
-				tl.rotation+=3;
+				shape.setRotation(shape.getRotation()+1);
+				img.setRotation(img.getRotation()-2);
+				tl.setRotation(tl.getRotation()+3);
 				
 				bounds.getPath().reset();
 				bounds.getPath().addRect(shape.getBounds(), Direction.CW);
