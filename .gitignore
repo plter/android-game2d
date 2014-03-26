@@ -1,4 +1,4 @@
 .metadata
 bin
 gen
-*.class
+obj
