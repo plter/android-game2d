@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DAE471E0-8773-459B-A307-412DFC6C6815</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AndroidGame2DCC</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1EDDC0FE-93B4-41CE-BD61-41E32112F85D</key>
+		<string>https://github.com/plter/android-game2d.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>v2.0/cocos/AndroidGame2DCC/proj.ios_mac/AndroidGame2DCC.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1EDDC0FE-93B4-41CE-BD61-41E32112F85D</key>
+		<string>../../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/plter/android-game2d.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1EDDC0FE-93B4-41CE-BD61-41E32112F85D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1EDDC0FE-93B4-41CE-BD61-41E32112F85D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>android-game2d</string>
+		</dict>
+	</array>
+</dict>
+</plist>
