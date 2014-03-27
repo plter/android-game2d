@@ -20,7 +20,6 @@ public class Game2DActivity extends NativeActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 	}
 	
 	protected void onGame2DCreationComplete(){
