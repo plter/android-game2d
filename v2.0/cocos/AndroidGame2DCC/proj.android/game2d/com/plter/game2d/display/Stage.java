@@ -1,6 +1,9 @@
 package com.plter.game2d.display;
 
+import com.plter.game2d.events.EventListenerList;
+import com.plter.game2d.events.KeyEvent;
 import com.plter.game2d.geom.Size;
+import com.plter.game2d.keys.KeyCode;
 
 public final class Stage extends DisplayObjectContainer {
 
@@ -48,4 +51,23 @@ public final class Stage extends DisplayObjectContainer {
 		nativeSetDesignResolutionSize(width, height, policy);
 	}
 	private native void nativeSetDesignResolutionSize(float width,float height,int resolutionPolicy);
+	
+	
+	void onKeyEventHandler(String type,int keyCode){
+		onKeyEvent.dispatch(new KeyEvent(type, keyCode), this);
+		
+		if (type.equals(KeyEvent.KEY_UP)&&keyCode == KeyCode.KEY_BACKSPACE) {
+			getActivity().handleCloseEvents();
+		}
+	}
+	
+	public final EventListenerList<KeyEvent> onKeyEvent = new EventListenerList<KeyEvent>();
+	
+	private Game2DActivity activity = null;
+	public Game2DActivity getActivity() {
+		return activity;
+	}
+	void setActivity(Game2DActivity activity) {
+		this.activity = activity;
+	}
 }

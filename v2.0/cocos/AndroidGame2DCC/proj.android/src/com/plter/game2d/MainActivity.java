@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com.plter.game2d.display.Game2DActivity;
 import com.plter.game2d.display.Label;
-import com.plter.game2d.display.Alert;
 import com.plter.game2d.events.EventListener;
 import com.plter.game2d.events.TouchEvent;
 import com.plter.game2d.geom.Size;
@@ -31,7 +30,6 @@ public class MainActivity extends Game2DActivity {
 			
 			@Override
 			public boolean onReceive(TouchEvent event, Object target) {
-				Alert.showBox("Haha");
 				return false;
 			}
 		});

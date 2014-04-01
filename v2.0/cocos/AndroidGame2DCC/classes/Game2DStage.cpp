@@ -21,12 +21,19 @@ bool Game2DStage::init()
     {
         return false;
     }
-    
+    //creation complete call back
     JniMethodInfo nativeCreationCompleteCallbackMInfo;
     JniHelper::getStaticMethodInfo(nativeCreationCompleteCallbackMInfo, "com.plter.game2d.display.Game2DActivity", "nativeCreationCompleteCallback", "()V");
     nativeCreationCompleteCallbackMInfo.env->CallStaticVoidMethod(nativeCreationCompleteCallbackMInfo.classID, nativeCreationCompleteCallbackMInfo.methodID);
     
+    addTouchListener();
+    addKeyPressListener();
     
+    return true;
+}
+
+
+void Game2DStage::addTouchListener(){
     JniMethodInfo nativeTouchCallbackMInfo;
     JniHelper::getStaticMethodInfo(nativeTouchCallbackMInfo, "com.plter.game2d.display.Game2DActivity", "nativeTouchCallback", "(Ljava/lang/String;[F)V");
     
@@ -41,9 +48,8 @@ bool Game2DStage::init()
         this->touchHandler(nativeTouchCallbackMInfo, "touchMoved", touches);
     };
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
-    
-    return true;
 }
+
 
 void Game2DStage::touchHandler(JniMethodInfo nativeTouchCallbackMInfo, std::string type, std::vector<cocos2d::Touch *> &touches){
     
@@ -71,4 +77,29 @@ void Game2DStage::touchHandler(JniMethodInfo nativeTouchCallbackMInfo, std::stri
     
     nativeTouchCallbackMInfo.env->DeleteLocalRef(jType);
     nativeTouchCallbackMInfo.env->DeleteLocalRef(arr);
+}
+
+
+void Game2DStage::addKeyPressListener(){
+    JniMethodInfo nativeKeyEventCallbackMInfo;
+    JniHelper::getStaticMethodInfo(nativeKeyEventCallbackMInfo, "com.plter.game2d.display.Game2DActivity", "nativeKeyPressCallback", "(Ljava/lang/String;I)V");
+    
+    
+    auto l = EventListenerKeyboard::create();
+    l->onKeyPressed = [this,nativeKeyEventCallbackMInfo](EventKeyboard::KeyCode code,Event *e){
+        this->keyEventHandler(nativeKeyEventCallbackMInfo, "keyDown", (int)code);
+    };
+    l->onKeyReleased = [this,nativeKeyEventCallbackMInfo](EventKeyboard::KeyCode code,Event *e){
+        this->keyEventHandler(nativeKeyEventCallbackMInfo, "keyUp", (int)code);
+    };
+    
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(l, this);
+}
+
+void Game2DStage::keyEventHandler(cocos2d::JniMethodInfo minfo, std::string type, int keyCode){
+    jstring jtype = minfo.env->NewStringUTF(type.c_str());
+    
+    minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID,jtype,keyCode);
+    
+    minfo.env->DeleteLocalRef(jtype);
 }

@@ -2,9 +2,9 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := cocos2dcpp_shared
+LOCAL_MODULE := game2d_shared
 
-LOCAL_MODULE_FILENAME := libcocos2dcpp
+LOCAL_MODULE_FILENAME := libgame2d
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \

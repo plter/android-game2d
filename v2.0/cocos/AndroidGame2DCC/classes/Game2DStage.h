@@ -14,6 +14,10 @@ public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
     void touchHandler(cocos2d::JniMethodInfo nativeTouchCallbackMInfo,std::string type,std::vector<cocos2d::Touch*> & touches);
+    void addTouchListener();
+    
+    void addKeyPressListener();
+    void keyEventHandler(cocos2d::JniMethodInfo minfo,std::string type,int keyCode);
     
     static Game2DStage *getInstance();
 };
