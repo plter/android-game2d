@@ -205,7 +205,7 @@ public abstract class Display {
     }
 
     private float x = 0, y = 0, scaleX = 1, scaleY = 1, rotation = 0, regX = 0, regY = 0;
-    public boolean visible = true;
+    private boolean visible = true;
     private Container parent = null;
     private boolean touchEnable = true;
     private float alpha = 1;

@@ -57,7 +57,6 @@ public class XML {
 	/**
 	 * 取得节点的属性值
 	 * @param name	属性的名字
-	 * @param node	节点
 	 * @return
 	 */
 	public String getAttr(String name){

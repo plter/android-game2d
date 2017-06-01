@@ -123,14 +123,14 @@ public class GameView extends SurfaceView implements IContainer {
     private int gameViewBackground = Color.WHITE;
     private final Stage rootContainer = new Stage();
 
-    public final EventListenerList<GameViewEvent> enterFrame = new EventListenerList<GameViewEvent>();
-    public final EventListenerList<GameViewEvent> surfaceDestroyed = new EventListenerList<GameViewEvent>();
-    public final EventListenerList<GameViewEvent> surfaceCreated = new EventListenerList<GameViewEvent>();
-    public final EventListenerList<GameViewEvent> surfaceChanged = new EventListenerList<GameViewEvent>();
-    public final EventListenerList<G2DMotionEvent> touch = new EventListenerList<G2DMotionEvent>();
-    public final EventListenerList<G2DMotionEvent> touchMove = new EventListenerList<G2DMotionEvent>();
-    public final EventListenerList<G2DMotionEvent> touchDown = new EventListenerList<G2DMotionEvent>();
-    public final EventListenerList<G2DMotionEvent> touchUp = new EventListenerList<G2DMotionEvent>();
+    public final EventListenerList<GameViewEvent> enterFrame = new EventListenerList<>();
+    public final EventListenerList<GameViewEvent> surfaceDestroyed = new EventListenerList<>();
+    public final EventListenerList<GameViewEvent> surfaceCreated = new EventListenerList<>();
+    public final EventListenerList<GameViewEvent> surfaceChanged = new EventListenerList<>();
+    public final EventListenerList<G2DMotionEvent> touch = new EventListenerList<>();
+    public final EventListenerList<G2DMotionEvent> touchMove = new EventListenerList<>();
+    public final EventListenerList<G2DMotionEvent> touchDown = new EventListenerList<>();
+    public final EventListenerList<G2DMotionEvent> touchUp = new EventListenerList<>();
 
     private final Callback callback = new Callback() {
 
