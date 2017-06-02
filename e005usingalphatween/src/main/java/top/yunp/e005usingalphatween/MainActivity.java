@@ -3,6 +3,7 @@ package top.yunp.e005usingalphatween;
 import android.app.Activity;
 import android.os.Bundle;
 
+import top.yunp.androidgame2d.display.Display;
 import top.yunp.androidgame2d.display.GameView;
 import top.yunp.androidgame2d.display.Image;
 import top.yunp.androidgame2d.events.TouchEvent;
@@ -27,10 +28,10 @@ public class MainActivity extends Activity {
         img = new Image(BitmapLoader.loadBitmap(this, R.mipmap.ic_launcher));
         gameView.add(img);
 
-        img.touchDown.add(new EventListener<TouchEvent>() {
+        img.touchDown.add(new EventListener<TouchEvent,Display>() {
 
             @Override
-            public boolean onReceive(TouchEvent event, Object target) {
+            public boolean onReceive(TouchEvent event, Display target) {
                 at.setTarget(img);
                 at.start();
                 return false;

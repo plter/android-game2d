@@ -21,7 +21,7 @@
 
 package top.yunp.lib.java.event;
 
-public abstract class EventListener<E extends Event> {
+public abstract class EventListener<E extends Event, EventTarget> {
 
 
     public EventListener() {
@@ -36,7 +36,7 @@ public abstract class EventListener<E extends Event> {
         return name;
     }
 
-    public abstract boolean onReceive(E event, Object target);
+    public abstract boolean onReceive(E event, EventTarget target);
 
 
     private String name = null;

@@ -6,6 +6,7 @@ import android.graphics.Path.Direction;
 import android.graphics.RectF;
 import android.os.Bundle;
 
+import top.yunp.androidgame2d.display.Display;
 import top.yunp.androidgame2d.display.GameView;
 import top.yunp.androidgame2d.display.Shape;
 import top.yunp.androidgame2d.events.TouchEvent;
@@ -32,10 +33,10 @@ public class MainActivity extends Activity {
         shape.getPaint().setColor(Color.RED);
         shape.getPath().addRect(new RectF(0, 0, 100, 100), Direction.CW);
 
-        shape.touchDown.add(new EventListener<TouchEvent>() {
+        shape.touchDown.add(new EventListener<TouchEvent, Display>() {
 
             @Override
-            public boolean onReceive(TouchEvent event, Object target) {
+            public boolean onReceive(TouchEvent event, Display target) {
                 tween.setTarget(shape);
                 tween.start();
                 return false;

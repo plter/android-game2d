@@ -210,8 +210,8 @@ public abstract class Display {
     private boolean touchEnable = true;
     private float alpha = 1;
 
-    public final EventListenerList<TouchEvent> touch = new EventListenerList<TouchEvent>();
-    public final EventListenerList<TouchEvent> touchMove = new EventListenerList<TouchEvent>();
-    public final EventListenerList<TouchEvent> touchDown = new EventListenerList<TouchEvent>();
-    public final EventListenerList<TouchEvent> touchUp = new EventListenerList<TouchEvent>();
+    public final EventListenerList<TouchEvent, Display> touch = new EventListenerList<>();
+    public final EventListenerList<TouchEvent, Display> touchMove = new EventListenerList<>();
+    public final EventListenerList<TouchEvent, Display> touchDown = new EventListenerList<>();
+    public final EventListenerList<TouchEvent, Display> touchUp = new EventListenerList<>();
 }

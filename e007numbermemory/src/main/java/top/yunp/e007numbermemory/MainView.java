@@ -2,6 +2,7 @@ package top.yunp.e007numbermemory;
 
 import android.content.Context;
 
+import top.yunp.androidgame2d.display.Display;
 import top.yunp.androidgame2d.display.GameView;
 import top.yunp.androidgame2d.events.TouchEvent;
 import top.yunp.lib.java.event.EventListener;
@@ -19,10 +20,10 @@ public class MainView extends GameView {
         nc.setY(50);
         add(nc);
 
-        nc.touchDown.add(new EventListener<TouchEvent>() {
+        nc.touchDown.add(new EventListener<TouchEvent, Display>() {
             @Override
-            public boolean onReceive(TouchEvent event, Object target) {
-                NumberCard c = (NumberCard) target;
+            public boolean onReceive(TouchEvent event, Display display) {
+                NumberCard c = (NumberCard) display;
 
                 if (c.getRecto().isVisible()) {
                     c.showVerso();

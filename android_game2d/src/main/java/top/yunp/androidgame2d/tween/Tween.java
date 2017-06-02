@@ -63,10 +63,9 @@ public abstract class Tween {
 
     private int frames = 20, currentFrame = 0;
 
-    private final EventListener<GameViewEvent> enterFrameHandler = new EventListener<GameViewEvent>(null) {
-
+    private final EventListener<GameViewEvent, GameView> enterFrameHandler = new EventListener<GameViewEvent, GameView>(null) {
         @Override
-        public boolean onReceive(GameViewEvent event, Object target) {
+        public boolean onReceive(GameViewEvent event, GameView target) {
             currentFrame++;
             onEnterFrame(currentFrame, frames);
             if (currentFrame >= frames) {
@@ -74,7 +73,7 @@ public abstract class Tween {
 
                 running = false;
                 onEnd();
-                tweenEnd.dispatch(new TweenEvent(TweenEvent.TWEEN_END), this);
+                tweenEnd.dispatch(new TweenEvent(TweenEvent.TWEEN_END), Tween.this);
             }
             return false;
         }
@@ -86,6 +85,6 @@ public abstract class Tween {
 
     private boolean running = false;
 
-    public final EventListenerList<TweenEvent> tweenStart = new EventListenerList<TweenEvent>();
-    public final EventListenerList<TweenEvent> tweenEnd = new EventListenerList<TweenEvent>();
+    public final EventListenerList<TweenEvent, Tween> tweenStart = new EventListenerList<>();
+    public final EventListenerList<TweenEvent, Tween> tweenEnd = new EventListenerList<>();
 }

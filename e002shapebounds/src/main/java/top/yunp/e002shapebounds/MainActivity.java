@@ -7,6 +7,7 @@ import android.graphics.Path.Direction;
 import android.graphics.RectF;
 import android.os.Bundle;
 
+import top.yunp.androidgame2d.display.Display;
 import top.yunp.androidgame2d.display.GameView;
 import top.yunp.androidgame2d.display.Image;
 import top.yunp.androidgame2d.display.Shape;
@@ -56,19 +57,19 @@ public class MainActivity extends Activity {
         bounds.getPaint().setStyle(Style.STROKE);
         bounds.getPaint().setColor(Color.RED);
 
-        shape.touch.add(new EventListener<TouchEvent>(null) {
+        shape.touch.add(new EventListener<TouchEvent, Display>(null) {
 
             @Override
-            public boolean onReceive(TouchEvent event, Object target) {
+            public boolean onReceive(TouchEvent event, Display target) {
                 System.out.println(event.getName());
                 return false;
             }
         });
 
-        gameView.enterFrame.add(new EventListener<GameViewEvent>() {
+        gameView.enterFrame.add(new EventListener<GameViewEvent, GameView>() {
 
             @Override
-            public boolean onReceive(GameViewEvent event, Object target) {
+            public boolean onReceive(GameViewEvent event, GameView target) {
                 shape.setRotation(shape.getRotation() + 1);
                 img.setRotation(img.getRotation() - 2);
                 tl.setRotation(tl.getRotation() + 3);

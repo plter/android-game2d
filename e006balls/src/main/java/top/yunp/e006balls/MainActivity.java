@@ -9,23 +9,23 @@ import top.yunp.lib.java.event.EventListener;
 
 public class MainActivity extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		GameView gv = new GameView(this);
-		gv.setFps(60);
-		final Main m = new Main();
-		setContentView(gv);
-		gv.add(m);
-		
-		gv.enterFrame.add(new EventListener<GameViewEvent>() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-			@Override
-			public boolean onReceive(GameViewEvent event, Object target) {
-				m.move();
-				return false;
-			}
-		});
-	}
+        GameView gv = new GameView(this);
+        gv.setFps(60);
+        final Main m = new Main();
+        setContentView(gv);
+        gv.add(m);
+
+        gv.enterFrame.add(new EventListener<GameViewEvent, GameView>() {
+
+            @Override
+            public boolean onReceive(GameViewEvent event, GameView target) {
+                m.move();
+                return false;
+            }
+        });
+    }
 }
