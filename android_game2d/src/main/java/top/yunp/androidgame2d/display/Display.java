@@ -68,6 +68,12 @@ public abstract class Display {
         touch.dispatch(e, this);
     }
 
+    public void removeFromParent() {
+        if (getParent() != null) {
+            getParent().remove(this);
+        }
+    }
+
     public boolean hitTest(float x, float y) {
         return getBounds().contains(x, y);
     }

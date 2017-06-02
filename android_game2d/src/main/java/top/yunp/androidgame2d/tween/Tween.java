@@ -69,7 +69,7 @@ public abstract class Tween {
             currentFrame++;
             onEnterFrame(currentFrame, frames);
             if (currentFrame >= frames) {
-                getTarget().getGameView().enterFrame.remove(enterFrameHandler);
+                target.enterFrame.remove(enterFrameHandler);
 
                 running = false;
                 onEnd();

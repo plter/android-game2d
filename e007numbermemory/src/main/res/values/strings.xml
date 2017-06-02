@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">NumberMemory</string>
+    <string name="welcome">Welcome</string>
+    <string name="click_start_button_to_start_game">Click [Start] button to start the game</string>
+    <string name="start">Start</string>
+    <string name="close">Close</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="you_win">You win</string>
+    <string name="replay_again">Replay</string>
+    <string name="note">Note</string>
+    <string name="number_wrong_game_will_restart">You clicked wrong number,The game will restart</string>
+    <string name="game_will_go_to_next_level_it_will_show">The game will go to next level,and it will show</string>
+    <string name="cards">cards</string>
 </resources>

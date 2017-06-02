@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">数字记忆</string>
+    <string name="welcome">欢迎玩我</string>
+    <string name="click_start_button_to_start_game">点击『开始』按钮玩游戏</string>
+    <string name="start">开始</string>
+    <string name="close">关闭</string>
+    <string name="congratulations">恭喜</string>
+    <string name="you_win">你赢了</string>
+    <string name="replay_again">再玩一次</string>
+    <string name="note">提醒</string>
+    <string name="number_wrong_game_will_restart">点错了，游戏将重新开始</string>
+    <string name="game_will_go_to_next_level_it_will_show">游戏将进入下一关，将呈现</string>
+    <string name="cards">个卡片</string>
 </resources>

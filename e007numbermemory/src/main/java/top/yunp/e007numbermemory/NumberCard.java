@@ -35,9 +35,9 @@ public class NumberCard extends Sprite {
     private void buildUI() {
 
         //卡片的半宽
-        int halfWidth = Config.CARD_WIDTH / 2;
+        int halfWidth = Config.getCardWidthInPx() / 2;
         //卡片的半高
-        int halfHeight = Config.CARD_HEIGHT / 2;
+        int halfHeight = Config.getCardHeightInPx() / 2;
         int margin = 5;
 
         //build recto
@@ -58,7 +58,7 @@ public class NumberCard extends Sprite {
         //创建卡片正面的数字文本对象
         TextLine tl = new TextLine(String.valueOf(getNumber()));
         //设置文字的大小
-        tl.setSize(80);
+        tl.setSize(Config.getTextSize());
         //将文字添加到正面图形中
         recto.add(tl);
         //计算文字的高度
