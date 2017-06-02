@@ -26,9 +26,9 @@ public class MainView extends GameView {
                 NumberCard c = (NumberCard) display;
 
                 if (c.getRecto().isVisible()) {
-                    c.showVerso();
+                    c.turnToVerso();
                 } else {
-                    c.showRecto();
+                    c.turnToRecto();
                 }
                 return false;
             }

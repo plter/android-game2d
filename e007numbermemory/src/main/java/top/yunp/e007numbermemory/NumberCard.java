@@ -6,6 +6,10 @@ import android.graphics.Path;
 import top.yunp.androidgame2d.display.Shape;
 import top.yunp.androidgame2d.display.Sprite;
 import top.yunp.androidgame2d.display.TextLine;
+import top.yunp.androidgame2d.events.TweenEvent;
+import top.yunp.androidgame2d.tween.ScaleTween;
+import top.yunp.androidgame2d.tween.Tween;
+import top.yunp.lib.java.event.EventListener;
 
 /**
  * Created by plter on 6/2/17.
@@ -16,11 +20,15 @@ public class NumberCard extends Sprite {
     private int number = 0;
     private Sprite recto;//声明卡片的正面
     private Shape verso;//声明卡片的反面
+    private ScaleTween scaleX1To0 = new ScaleTween(null, 1, 1, 0, 1);
+    private ScaleTween scaleX0To1 = new ScaleTween(null, 0, 1, 1, 1);
+    private boolean tweenRunning = false;
 
     public NumberCard(int number) {
         this.number = number;
 
         buildUI();
+        addTweenListeners();
     }
 
 
@@ -74,6 +82,32 @@ public class NumberCard extends Sprite {
         showRecto();
     }
 
+
+    private void addTweenListeners() {
+        scaleX1To0.tweenEnd.add(new EventListener<TweenEvent, Tween>() {
+            @Override
+            public boolean onReceive(TweenEvent event, Tween tween) {
+                if (getRecto().isVisible()) {
+                    getVerso().setScaleX(0);
+                    showVerso();
+                    scaleX0To1.setTarget(getVerso()).start();
+                } else {
+                    getRecto().setScaleX(0);
+                    showRecto();
+                    scaleX0To1.setTarget(getRecto()).start();
+                }
+                return false;
+            }
+        });
+        scaleX0To1.tweenEnd.add(new EventListener<TweenEvent, Tween>() {
+            @Override
+            public boolean onReceive(TweenEvent event, Tween tween) {
+                tweenRunning = false;
+                return false;
+            }
+        });
+    }
+
     /**
      * 呈现卡片的正面
      */
@@ -88,6 +122,20 @@ public class NumberCard extends Sprite {
     public void showVerso() {
         recto.setVisible(false);
         verso.setVisible(true);
+    }
+
+    public void turnToRecto() {
+        if (!tweenRunning && getVerso().isVisible()) {
+            scaleX1To0.setTarget(getVerso()).start();
+            tweenRunning = true;
+        }
+    }
+
+    public void turnToVerso() {
+        if (!tweenRunning && getRecto().isVisible()) {
+            scaleX1To0.setTarget(getRecto()).start();
+            tweenRunning = true;
+        }
     }
 
     /**
