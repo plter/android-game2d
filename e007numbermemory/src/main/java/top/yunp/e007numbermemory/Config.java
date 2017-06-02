@@ -6,7 +6,7 @@ package top.yunp.e007numbermemory;
 
 public class Config {
 
-    public static final int CARD_WIDTH = 100;
-    public static final int CARD_HEIGHT = 100;
+    public static final int CARD_WIDTH = 120;
+    public static final int CARD_HEIGHT = 120;
 
 }

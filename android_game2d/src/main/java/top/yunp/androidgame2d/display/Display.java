@@ -121,8 +121,9 @@ public abstract class Display {
         return alpha;
     }
 
-    public void setAlpha(float alpha) {
+    public Display setAlpha(float alpha) {
         this.alpha = alpha;
+        return this;
     }
 
     public float getX() {
@@ -130,8 +131,9 @@ public abstract class Display {
     }
 
 
-    public void setX(float x) {
+    public Display setX(float x) {
         this.x = x;
+        return this;
     }
 
 
@@ -140,8 +142,9 @@ public abstract class Display {
     }
 
 
-    public void setY(float y) {
+    public Display setY(float y) {
         this.y = y;
+        return this;
     }
 
 
@@ -150,8 +153,9 @@ public abstract class Display {
     }
 
 
-    public void setScaleX(float scaleX) {
+    public Display setScaleX(float scaleX) {
         this.scaleX = scaleX;
+        return this;
     }
 
 
@@ -160,8 +164,9 @@ public abstract class Display {
     }
 
 
-    public void setScaleY(float scaleY) {
+    public Display setScaleY(float scaleY) {
         this.scaleY = scaleY;
+        return this;
     }
 
 
@@ -170,8 +175,9 @@ public abstract class Display {
     }
 
 
-    public void setRotation(float rotation) {
+    public Display setRotation(float rotation) {
         this.rotation = rotation;
+        return this;
     }
 
 
@@ -180,8 +186,9 @@ public abstract class Display {
     }
 
 
-    public void setRegX(float regX) {
+    public Display setRegX(float regX) {
         this.regX = regX;
+        return this;
     }
 
 
@@ -190,8 +197,9 @@ public abstract class Display {
     }
 
 
-    public void setRegY(float regY) {
+    public Display setRegY(float regY) {
         this.regY = regY;
+        return this;
     }
 
 
@@ -200,8 +208,9 @@ public abstract class Display {
     }
 
 
-    public void setVisible(boolean visible) {
+    public Display setVisible(boolean visible) {
         this.visible = visible;
+        return this;
     }
 
     private float x = 0, y = 0, scaleX = 1, scaleY = 1, rotation = 0, regX = 0, regY = 0;

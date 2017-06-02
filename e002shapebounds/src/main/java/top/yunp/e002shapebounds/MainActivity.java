@@ -57,15 +57,6 @@ public class MainActivity extends Activity {
         bounds.getPaint().setStyle(Style.STROKE);
         bounds.getPaint().setColor(Color.RED);
 
-        shape.touch.add(new EventListener<TouchEvent, Display>(null) {
-
-            @Override
-            public boolean onReceive(TouchEvent event, Display target) {
-                System.out.println(event.getName());
-                return false;
-            }
-        });
-
         gameView.enterFrame.add(new EventListener<GameViewEvent, GameView>() {
 
             @Override

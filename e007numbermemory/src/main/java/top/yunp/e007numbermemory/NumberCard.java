@@ -28,7 +28,7 @@ public class NumberCard extends Sprite {
         this.number = number;
 
         buildUI();
-        addTweenListeners();
+        buildTweens();
     }
 
 
@@ -38,6 +38,7 @@ public class NumberCard extends Sprite {
         int halfWidth = Config.CARD_WIDTH / 2;
         //卡片的半高
         int halfHeight = Config.CARD_HEIGHT / 2;
+        int margin = 5;
 
         //build recto
 
@@ -48,7 +49,7 @@ public class NumberCard extends Sprite {
         //为正面背景设置为红色
         rectoBg.getPaint().setColor(Color.RED);
         //为正面背景添加一个矩形框
-        rectoBg.getPath().addRect(-halfWidth, -halfHeight, halfWidth, halfHeight, Path.Direction.CW);
+        rectoBg.getPath().addRect(-halfWidth + margin, -halfHeight + margin, halfWidth - margin, halfHeight - margin, Path.Direction.CW);
         //该背景添加到正面图形中
         recto.add(rectoBg);
         //将卡片正面图形添加到该卡片中
@@ -74,7 +75,7 @@ public class NumberCard extends Sprite {
         //设置反面的颜色为蓝色
         verso.getPaint().setColor(Color.BLUE);
         //为反面添加一个矩形框
-        verso.getPath().addRect(-halfWidth, -halfHeight, halfWidth, halfHeight, Path.Direction.CW);
+        verso.getPath().addRect(-halfWidth + margin, -halfHeight + margin, halfWidth - margin, halfHeight - margin, Path.Direction.CW);
         //将反面添加到该卡片中
         add(verso);
 
@@ -83,7 +84,10 @@ public class NumberCard extends Sprite {
     }
 
 
-    private void addTweenListeners() {
+    private void buildTweens() {
+        scaleX0To1.setFrames(5);
+        scaleX1To0.setFrames(5);
+
         scaleX1To0.tweenEnd.add(new EventListener<TweenEvent, Tween>() {
             @Override
             public boolean onReceive(TweenEvent event, Tween tween) {
@@ -124,6 +128,9 @@ public class NumberCard extends Sprite {
         verso.setVisible(true);
     }
 
+    /**
+     * 将卡片翻转到正面
+     */
     public void turnToRecto() {
         if (!tweenRunning && getVerso().isVisible()) {
             scaleX1To0.setTarget(getVerso()).start();
@@ -131,6 +138,9 @@ public class NumberCard extends Sprite {
         }
     }
 
+    /**
+     * 将卡片翻转到反面
+     */
     public void turnToVerso() {
         if (!tweenRunning && getRecto().isVisible()) {
             scaleX1To0.setTarget(getRecto()).start();

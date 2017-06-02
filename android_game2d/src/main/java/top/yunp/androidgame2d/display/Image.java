@@ -65,9 +65,9 @@ public class Image extends Display {
     }
 
     @Override
-    public void setAlpha(float alpha) {
+    public Display setAlpha(float alpha) {
         paint.setAlpha((int) (255 * alpha));
-        super.setAlpha(alpha);
+        return super.setAlpha(alpha);
     }
 
     public Paint getPaint() {
