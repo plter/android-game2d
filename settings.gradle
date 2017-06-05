@@ -1,1 +1,1 @@
-include ':yunp_android_java_common_lib', ':e001usingimage', ':android_game2d', ':e002shapebounds', ':e003usingtext', ':e004usingtranslatetween', ':e005usingalphatween', ':e006balls', ':e007numbermemory'
+include ':yunp_android_java_common_lib', ':e001usingimage', ':android_game2d', ':e002shapebounds', ':e003usingtext', ':e004usingtranslatetween', ':e005usingalphatween', ':e006balls', ':e007numbermemory', ':e008donttouchwhiterect'

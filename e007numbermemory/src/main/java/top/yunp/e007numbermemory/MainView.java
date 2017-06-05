@@ -48,6 +48,7 @@ public class MainView extends GameView {
                         getActivity().finish();
                     }
                 })
+                .setCancelable(false)
                 .setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
