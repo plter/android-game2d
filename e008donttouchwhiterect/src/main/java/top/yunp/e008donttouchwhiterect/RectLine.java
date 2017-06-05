@@ -48,6 +48,7 @@ public class RectLine extends Container {
 
         Rect r;
 
+        //在行中添加4个方块
         for (int i = 0; i < 4; i++) {
             r = new Rect(false);
             r.setBorderWidth(5);
@@ -57,6 +58,7 @@ public class RectLine extends Container {
             r.touchDown.add(rectTouchDownHandler);
         }
 
+        //随机将其中一个方块设置为黑色
         rects.get((int) (Math.random() * rects.size())).setBlack(true);
 
         //Create a TranslateTween object which is using to move this line down
@@ -89,6 +91,9 @@ public class RectLine extends Container {
     }
 
 
+    /**
+     * 根据索引位置将该行移动到特定的坐标位置
+     */
     public void moveToTargetPositionByIndex() {
         if (!tweenRunning) {
             tweenRunning = true;
