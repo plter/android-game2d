@@ -14,7 +14,7 @@ public class MainView extends GameView {
     public MainView(Context context) {
         super(context);
 
-        setGameViewBackground(0xffcccccc);
+        setGameViewBackground(0xff000000);
         shouldStartGame();
     }
 
@@ -44,8 +44,18 @@ public class MainView extends GameView {
     private void startGame() {
         initProperties();
 
-        RectLine rl = new RectLine();
-        add(rl);
+        addRectLines();
+    }
+
+    private void addRectLines() {
+
+        RectLine line;
+
+        for (int i = 0; i < 4; i++) {
+            line = new RectLine();
+            add(line);
+            line.setY(Config.getCardHeight() * i);
+        }
     }
 
     private void initProperties() {

@@ -19,6 +19,7 @@ public class RectLine extends Container {
 
         for (int i = 0; i < 4; i++) {
             r = new Rect(false);
+            r.setBorderWidth(5);
             r.setX(Config.getCardWidth() * i);
             add(r);
             rects.add(r);
