@@ -11,6 +11,13 @@ import top.yunp.androidgame2d.display.GameView;
  */
 
 public class MainView extends GameView {
+    private RectLine.OnRectSelected rectSelectedHandler = new RectLine.OnRectSelected() {
+        @Override
+        public void onSelect(Rect rect, RectLine target) {
+            System.out.println(rect + "," + target);
+        }
+    };
+
     public MainView(Context context) {
         super(context);
 
@@ -49,13 +56,18 @@ public class MainView extends GameView {
 
     private void addRectLines() {
 
-        RectLine line;
+        RectLine line = null;
 
         for (int i = 0; i < 4; i++) {
             line = new RectLine();
+            line.setTouchEnable(false);
             add(line);
             line.setY(Config.getCardHeight() * i);
+
+            line.setOnRectSelected(rectSelectedHandler);
         }
+
+        line.setTouchEnable(true);
     }
 
     private void initProperties() {
