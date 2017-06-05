@@ -66,6 +66,10 @@ public class RectLine extends Container {
     }
 
 
+    public boolean isTweenRunning() {
+        return tweenRunning;
+    }
+
     private int positionIndex = 0;
 
     public void setPositionIndex(int index) {

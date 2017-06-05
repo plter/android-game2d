@@ -20,8 +20,10 @@ public class MainView extends GameView {
         public void onSelect(Rect rect, RectLine target) {
 
             if (rect.isBlack()) {
-                addNewLineAtIndex(-1);
-                moveAllLinesDown();
+                if (isAllTweenEnded()) {
+                    addNewLineAtIndex(-1);
+                    moveAllLinesDown();
+                }
             } else {
                 Toast.makeText(getContext(), "点错了", Toast.LENGTH_SHORT).show();
             }
@@ -97,6 +99,15 @@ public class MainView extends GameView {
             rl.setPositionIndex(rl.getPositionIndex() + 1);
             rl.moveToTargetPositionByIndex();
         }
+    }
+
+    private boolean isAllTweenEnded() {
+        for (RectLine l : rectLines) {
+            if (l.isTweenRunning()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void initProperties() {
