@@ -3,6 +3,10 @@ package top.yunp.e008donttouchwhiterect;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import top.yunp.androidgame2d.display.GameView;
 
@@ -14,13 +18,31 @@ public class MainView extends GameView {
     private RectLine.OnRectSelected rectSelectedHandler = new RectLine.OnRectSelected() {
         @Override
         public void onSelect(Rect rect, RectLine target) {
-            System.out.println(rect + "," + target);
+
+            if (rect.isBlack()) {
+                addNewLineAtIndex(-1);
+                moveAllLinesDown();
+            } else {
+                Toast.makeText(getContext(), "点错了", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+    private List<RectLine> rectLines = new ArrayList<>();
+    private RectLine.OnLineMoveDownTweenEnd lineMoveTweenEndHandler = new RectLine.OnLineMoveDownTweenEnd() {
+        @Override
+        public void onEnd(RectLine target) {
+            if (target.getPositionIndex() >= 4) {
+                rectLines.remove(target);
+                remove(target);
+            }
         }
     };
 
     public MainView(Context context) {
         super(context);
 
+        setFps(50);
         setGameViewBackground(0xff000000);
         shouldStartGame();
     }
@@ -55,19 +77,26 @@ public class MainView extends GameView {
     }
 
     private void addRectLines() {
-
-        RectLine line = null;
-
         for (int i = 0; i < 4; i++) {
-            line = new RectLine();
-            line.setTouchEnable(false);
-            add(line);
-            line.setY(Config.getCardHeight() * i);
-
-            line.setOnRectSelected(rectSelectedHandler);
+            addNewLineAtIndex(i);
         }
+    }
 
-        line.setTouchEnable(true);
+    private void addNewLineAtIndex(int index) {
+        RectLine line = new RectLine();
+        line.setOnRectSelected(rectSelectedHandler);
+        line.setPositionIndex(index);
+        line.setPositionYByIndex();
+        line.setOnLineMoveDownTweenEnd(lineMoveTweenEndHandler);
+        add(line);
+        rectLines.add(line);
+    }
+
+    private void moveAllLinesDown() {
+        for (RectLine rl : rectLines) {
+            rl.setPositionIndex(rl.getPositionIndex() + 1);
+            rl.moveToTargetPositionByIndex();
+        }
     }
 
     private void initProperties() {
