@@ -10,8 +10,7 @@ public class Rectangle extends Shape {
 
     private float width = 100, height = 100;
     private int color = 0xff000000;
-    private int borderWidth = 0;
-    private int borderColor = 0xffffffff;
+    private int padding = 0;
 
     public Rectangle(float width, float height, int color) {
         setWidth(width);
@@ -48,26 +47,16 @@ public class Rectangle extends Shape {
 
     private void refreshRectanglePath() {
         getPath().reset();
-        getPath().addRect(getBorderWidth(), getBorderWidth(), getWidth() - getBorderWidth(), getHeight() - getBorderWidth(), Path.Direction.CW);
+        getPath().addRect(getPadding(), getPadding(), getWidth() - getPadding(), getHeight() - getPadding(), Path.Direction.CW);
         getPath().close();
     }
 
-    public int getBorderWidth() {
-        return borderWidth;
+    public int getPadding() {
+        return padding;
     }
 
-    public void setBorderWidth(int borderWidth) {
-        this.borderWidth = borderWidth;
+    public void setPadding(int padding) {
+        this.padding = padding;
         refreshRectanglePath();
-    }
-
-    public int getBorderColor() {
-        return borderColor;
-    }
-
-    public void setBorderColor(int borderColor) {
-        this.borderColor = borderColor;
-
-        //TODO implement the border color
     }
 }

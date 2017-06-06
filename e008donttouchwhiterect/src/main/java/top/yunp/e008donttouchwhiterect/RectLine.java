@@ -51,7 +51,7 @@ public class RectLine extends Container {
         //在行中添加4个方块
         for (int i = 0; i < 4; i++) {
             r = new Rect(false);
-            r.setBorderWidth(5);
+            r.setPadding(5);
             r.setX(Config.getCardWidth() * i);
             add(r);
             rects.add(r);
